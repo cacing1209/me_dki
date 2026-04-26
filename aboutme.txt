@@ -1,0 +1,12 @@
+experience
+-serabutan ioT enginerr membuat smart system dengan device local esp32,esp3266,arduinomega,raspbery stak:c++python,c,database pakai doker masih belajar
+-2022 pernah jadi teknisi alatkesehatan di rssa malang memperbaiki alat xray,dental,infuspump,ekg,ecg,treadmill,
+-2020 teknisi pendingin airconditioner casset,split,sentral sebagai team lead dan teknisi lapangan dan pernah menjadi jembatan Kerjasama dengan pt GEA
+
+project:
+-buat controller membaca sensor air dan ditaampilkan di dashboard pakai esp8266
+-buat controller nurse call system pakai arduinomega2560,raspbery
+-buat controller doorlocke locker sekloah dengan Arduinomega2560, ethernetshield
+-buat controller keamanan motor pakai rfid,keyles by bt pakai keamanan aes chip ,esp32 dan scematic dan modul custom bikin sendiri by easyeda dan lcsc part
+
+contact:085600254072 email:dikilmj@gmail.com
