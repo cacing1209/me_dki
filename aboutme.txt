@@ -1,7 +1,7 @@
 experience
 -serabutan ioT enginerr membuat smart system dengan device local esp32,esp3266,arduinomega,raspbery stak:c++python,c,database pakai doker masih belajar
 -2022 pernah jadi teknisi alatkesehatan di rssa malang memperbaiki alat xray,dental,infuspump,ekg,ecg,treadmill,
--2020 teknisi pendingin airconditioner casset,split,sentral sebagai team lead dan teknisi lapangan dan pernah menjadi jembatan Kerjasama dengan pt GEA
+-2020 teknisi pendingin airconditioner casset,split,sentral sebagai team lead dan teknisi lapangan
 
 project:
 -buat controller nurse call system pakai arduinomega2560,raspbery

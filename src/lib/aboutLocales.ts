@@ -35,12 +35,12 @@ const EXPERIENCE_LOCALES: Record<string, LocalEntry> = {
     en: {
       title: 'HVAC Team Lead & Field Technician',
       description:
-        'AC cassette, split, and central systems. Led the field team and bridged a partnership with PT GEA.',
+        'AC cassette, split, and central systems. Led the field team.',
     },
     id: {
       title: 'Team Lead & Teknisi Lapangan HVAC',
       description:
-        'Sistem AC cassette, split, dan sentral. Memimpin tim lapangan dan jadi jembatan kerja sama dengan PT GEA.',
+        'Sistem AC cassette, split, dan sentral. Memimpin tim lapangan.',
     },
   },
 }
