@@ -32,7 +32,6 @@ const TECH_TAGS: Record<string, string> = {
   ethernetshield: 'Ethernet Shield',
   rfid: 'RFID',
   aes: 'AES',
-  bt: 'Bluetooth',
   mqtt: 'MQTT',
   doker: 'Docker',
   docker: 'Docker',
@@ -57,9 +56,7 @@ const TITLE_HINTS: { match: RegExp; title: string }[] = [
     match: /pendingin|airconditioner|cassett|split|sentral|ac/i,
     title: 'HVAC Team Lead & Field Technician',
   },
-  { match: /sensor air|dashboard/i, title: 'Water Sensor Dashboard' },
   { match: /nurse call/i, title: 'Nurse Call System' },
-  { match: /doorlocke|locker|sekloah|sekolah/i, title: 'School Locker Doorlock' },
   { match: /motor|rfid|keyles/i, title: 'Motorcycle Security System' },
 ]
 

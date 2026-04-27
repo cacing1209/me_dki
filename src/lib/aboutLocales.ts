@@ -46,18 +46,6 @@ const EXPERIENCE_LOCALES: Record<string, LocalEntry> = {
 }
 
 const PROJECT_LOCALES: Record<string, LocalEntry> = {
-  'Water Sensor Dashboard': {
-    en: {
-      title: 'Water Sensor Dashboard',
-      description:
-        'Controller that reads water sensors and streams readings to a live dashboard, powered by ESP8266.',
-    },
-    id: {
-      title: 'Dashboard Sensor Air',
-      description:
-        'Controller yang baca sensor air dan kirim data ke dashboard live, ditenagai ESP8266.',
-    },
-  },
   'Nurse Call System': {
     en: {
       title: 'Nurse Call System',
@@ -68,18 +56,6 @@ const PROJECT_LOCALES: Record<string, LocalEntry> = {
       title: 'Sistem Nurse Call',
       description:
         'Controller nurse call rumah sakit pakai Arduino Mega 2560 dengan gateway Raspberry Pi.',
-    },
-  },
-  'School Locker Doorlock': {
-    en: {
-      title: 'School Locker Doorlock',
-      description:
-        'School-locker door-lock controller built on Arduino Mega 2560 + Ethernet Shield for networked access.',
-    },
-    id: {
-      title: 'Kunci Pintu Loker Sekolah',
-      description:
-        'Controller kunci pintu loker sekolah pakai Arduino Mega 2560 + Ethernet Shield untuk akses via jaringan.',
     },
   },
   'Motorcycle Security System': {

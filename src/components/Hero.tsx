@@ -6,7 +6,6 @@ import type { Lang } from '../lib/translations'
 const ROLES: Record<Lang, string[]> = {
   en: [
     'IoT Engineer',
-    'Hacker',
     'Hardware Tinkerer',
     'CTF Player',
     'Maker',
@@ -14,7 +13,6 @@ const ROLES: Record<Lang, string[]> = {
   ],
   id: [
     'Insinyur IoT',
-    'Hacker',
     'Penjelajah Hardware',
     'Pemain CTF',
     'Maker',

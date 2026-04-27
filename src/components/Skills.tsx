@@ -21,7 +21,6 @@ const skills: Skill[] = [
   { name: 'MQTT', glyph: '≋', color: '#660066', category: 'proto' },
   { name: 'AES', glyph: '⚿', color: '#c6ff00', category: 'proto' },
   { name: 'RFID', glyph: '))) ', color: '#5af7ff', category: 'proto' },
-  { name: 'Bluetooth', glyph: '✦', color: '#0082FC', category: 'proto' },
   { name: 'Docker', glyph: '🐳', color: '#2496ED', category: 'tool' },
   { name: 'EasyEDA', glyph: '⚒', color: '#1762a8', category: 'tool' },
   { name: 'LCSC', glyph: '⎘', color: '#ff3df0', category: 'tool' },
