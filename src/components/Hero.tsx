@@ -91,7 +91,7 @@ export default function Hero({ name = 'diki' }: { name?: string }) {
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 pt-28 pb-20"
     >
       {/* hanging living-room lamp — click to toggle */}
-      <div className="absolute top-0 left-1/2 z-20 -translate-x-1/2">
+      <div className="absolute top-0 left-1/2 z-20 origin-top -translate-x-1/2 scale-[0.55] sm:scale-75 md:scale-100">
         <button
           type="button"
           onClick={() => setLampOn((v) => !v)}
@@ -220,7 +220,7 @@ export default function Hero({ name = 'diki' }: { name?: string }) {
           {t('hero.badge')}
         </motion.div>
 
-        <h1 className="relative font-display text-6xl font-extrabold leading-[0.95] text-white sm:text-7xl md:text-[8.5rem]">
+        <h1 className="relative whitespace-nowrap font-display text-[clamp(2rem,9vw,8.5rem)] font-extrabold leading-[0.95] text-white">
           <span
             key={lang}
             className="glitch-text text-gradient"
