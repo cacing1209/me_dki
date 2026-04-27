@@ -31,8 +31,48 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
             hidden: {},
             show: { transition: { staggerChildren: 0.12 } },
           }}
-          className="grid gap-6 md:grid-cols-2"
+          className="grid items-start gap-6 lg:grid-cols-12"
         >
+          {/* left decorative card — top-aligned */}
+          <motion.aside
+            variants={{
+              hidden: { opacity: 0, x: -30 },
+              show: {
+                opacity: 1,
+                x: 0,
+                transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+            className="lg:col-span-3"
+          >
+            <div className="glass relative overflow-hidden rounded-2xl p-5">
+              <div
+                className="absolute inset-0 -z-10"
+                style={{
+                  background:
+                    'linear-gradient(135deg, #b347ff20, transparent 70%)',
+                }}
+              />
+              <div className="font-mono text-[10px] uppercase tracking-widest text-mist-2">
+                {t('proj.side_builds')}
+              </div>
+              <ul className="mt-3 space-y-2 font-mono text-xs text-mist">
+                <li className="flex items-center gap-2">
+                  <span className="text-[#b347ff]">→</span> {t('proj.b_water')}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#b347ff]">→</span> {t('proj.b_locker')}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#b347ff]">→</span> {t('proj.b_motor')}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#b347ff]">→</span> {t('proj.b_nurse')}
+                </li>
+              </ul>
+            </div>
+          </motion.aside>
+
           {items.map((p, i) => {
             const accent = accentFor(i)
             const local = localizeProject(p, lang)
@@ -48,6 +88,7 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
                     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
                   },
                 }}
+                className="lg:col-span-6"
               >
                 <TiltCard className="group relative h-full overflow-hidden rounded-2xl">
                   <div
@@ -84,6 +125,13 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
                     <h3 className="font-display text-2xl font-bold text-white md:text-3xl">
                       {local.title}
                     </h3>
+
+                    <div
+                      className="mt-2 font-mono text-[11px] tracking-wide"
+                      style={{ color: accent }}
+                    >
+                      {t('proj.tagline')}
+                    </div>
 
                     <p className="mt-3 text-sm leading-relaxed text-mist md:text-[15px]">
                       {local.description}
@@ -157,6 +205,43 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
               </motion.article>
             )
           })}
+
+          {/* right decorative card — top-aligned */}
+          <motion.aside
+            variants={{
+              hidden: { opacity: 0, x: 30 },
+              show: {
+                opacity: 1,
+                x: 0,
+                transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+            className="lg:col-span-3"
+          >
+            <div className="glass relative overflow-hidden rounded-2xl p-5">
+              <div
+                className="absolute inset-0 -z-10"
+                style={{
+                  background:
+                    'linear-gradient(225deg, #5af7ff20, transparent 70%)',
+                }}
+              />
+              <div className="font-mono text-[10px] uppercase tracking-widest text-mist-2">
+                {t('proj.side_flow')}
+              </div>
+              <ul className="mt-3 space-y-2 font-mono text-xs text-mist">
+                <li className="flex items-center gap-2">
+                  <span className="text-[#5af7ff]">→</span> EasyEDA
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#5af7ff]">→</span> LCSC
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#5af7ff]">→</span> JLCPCB
+                </li>
+              </ul>
+            </div>
+          </motion.aside>
         </motion.div>
       </div>
     </section>

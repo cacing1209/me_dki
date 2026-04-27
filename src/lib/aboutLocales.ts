@@ -46,28 +46,16 @@ const EXPERIENCE_LOCALES: Record<string, LocalEntry> = {
 }
 
 const PROJECT_LOCALES: Record<string, LocalEntry> = {
-  'Nurse Call System': {
+  'IoT Engineering Builds': {
     en: {
-      title: 'Nurse Call System',
+      title: 'IoT Engineer',
       description:
-        'Hospital nurse-call controller running on Arduino Mega 2560 with a Raspberry Pi gateway.',
+        'Built: water-sensor dashboard, school locker doorlock, RFID keyless motorcycle, and nurse-call system. Designed custom PCBs end-to-end — schematic in EasyEDA, parts and boards ordered from LCSC and JLCPCB.',
     },
     id: {
-      title: 'Sistem Nurse Call',
+      title: 'IoT Engineer',
       description:
-        'Controller nurse call rumah sakit pakai Arduino Mega 2560 dengan gateway Raspberry Pi.',
-    },
-  },
-  'Motorcycle Security System': {
-    en: {
-      title: 'Motorcycle Security System',
-      description:
-        'RFID + Bluetooth keyless entry secured with AES on ESP32. Custom schematic, PCB, and modules designed in EasyEDA — parts sourced from LCSC.',
-    },
-    id: {
-      title: 'Sistem Keamanan Motor',
-      description:
-        'RFID + keyless lewat Bluetooth dengan enkripsi AES di ESP32. Skematik, PCB, dan modul custom didesain sendiri di EasyEDA — komponen dari LCSC.',
+        'Bikin: dashboard sensor air, doorlock loker sekolah, keyless motor RFID, dan sistem nurse call. PCB custom dari awal — skematik di EasyEDA, komponen dan board dipesan dari LCSC dan JLCPCB.',
     },
   },
 }

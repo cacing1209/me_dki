@@ -4,7 +4,6 @@ experience
 -2020 teknisi pendingin airconditioner casset,split,sentral sebagai team lead dan teknisi lapangan
 
 project:
--buat controller nurse call system pakai arduinomega2560,raspbery
--buat controller keamanan motor pakai rfid,keyles by bt pakai keamanan aes chip ,esp32 dan scematic dan modul custom bikin sendiri by easyeda dan lcsc part
+-iot engineer builds: sensor air dashboard, doorlock locker sekolah, keyless motor rfid, nurse call system. custom pcb scematic by easyeda dan jlcpcb, part by lcsc
 
 contact:085600254072 email:dikilmj@gmail.com

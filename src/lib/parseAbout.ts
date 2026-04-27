@@ -40,6 +40,7 @@ const TECH_TAGS: Record<string, string> = {
   c: 'C',
   easyeda: 'EasyEDA',
   lcsc: 'LCSC',
+  jlcpcb: 'JLCPCB',
   ekg: 'EKG',
   ecg: 'ECG',
   xray: 'X-Ray',
@@ -47,6 +48,7 @@ const TECH_TAGS: Record<string, string> = {
 }
 
 const TITLE_HINTS: { match: RegExp; title: string }[] = [
+  { match: /jlcpcb|engineer builds|custom pcb/i, title: 'IoT Engineering Builds' },
   { match: /iot|esp32|esp8266|mqtt|smart system/i, title: 'IoT Engineer' },
   {
     match: /alatkesehatan|xray|infuspump|ekg|ecg/i,
@@ -56,8 +58,6 @@ const TITLE_HINTS: { match: RegExp; title: string }[] = [
     match: /pendingin|airconditioner|cassett|split|sentral|ac/i,
     title: 'HVAC Team Lead & Field Technician',
   },
-  { match: /nurse call/i, title: 'Nurse Call System' },
-  { match: /motor|rfid|keyles/i, title: 'Motorcycle Security System' },
 ]
 
 function inferTitle(line: string): string {

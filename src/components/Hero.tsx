@@ -83,12 +83,90 @@ export default function Hero({ name = 'diki' }: { name?: string }) {
   const { t, lang } = useT()
   const role = useTyping(ROLES[lang])
   const heading = `${t('hero.greeting')} ${name}`
+  const [lampOn, setLampOn] = useState(true)
 
   return (
     <section
       id="home"
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 pt-28 pb-20"
     >
+      {/* hanging living-room lamp — click to toggle */}
+      <div className="absolute top-0 left-1/2 z-20 -translate-x-1/2">
+        <button
+          type="button"
+          onClick={() => setLampOn((v) => !v)}
+          aria-label={lampOn ? 'turn lamp off' : 'turn lamp on'}
+          aria-pressed={lampOn}
+          className="relative block cursor-pointer bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-0"
+          style={{ width: 110, height: 220 }}
+        >
+          {/* cord */}
+          <div className="absolute top-0 left-1/2 h-[124px] w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-white/15 to-white/30" />
+          {/* shade */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2"
+            style={{
+              top: 124,
+              width: 0,
+              height: 0,
+              borderLeft: '40px solid transparent',
+              borderRight: '40px solid transparent',
+              borderTop: '48px solid rgba(40, 28, 24, 0.92)',
+              filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.5))',
+            }}
+          />
+          {/* bulb */}
+          <motion.div
+            className="absolute left-1/2 h-[28px] w-[28px] -translate-x-1/2 rounded-full"
+            style={{
+              top: 162,
+              background: lampOn
+                ? 'radial-gradient(circle, #fff4d6 0%, #ffd27f 55%, transparent 90%)'
+                : 'radial-gradient(circle, #2a2520 0%, #15110d 100%)',
+              boxShadow: lampOn
+                ? '0 0 42px 14px #ffd27f, 0 0 100px 32px rgba(255,183,77,0.55)'
+                : 'none',
+            }}
+            animate={
+              lampOn
+                ? {
+                    opacity: [1, 1, 1, 0.45, 1, 1, 0.75, 1, 1, 1, 0.55, 1, 1],
+                    scale: [1, 1, 1, 0.94, 1, 1, 0.97, 1, 1, 1, 0.95, 1, 1],
+                  }
+                : { opacity: 1, scale: 1 }
+            }
+            transition={
+              lampOn
+                ? { duration: 14, repeat: Infinity, ease: 'easeInOut' }
+                : { duration: 0.3 }
+            }
+          />
+        </button>
+        {/* projected light cone — non-interactive */}
+        <motion.div
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2"
+          style={{
+            top: 180,
+            width: 580,
+            height: 760,
+            background:
+              'radial-gradient(ellipse at top, rgba(255,210,127,0.26) 0%, rgba(255,210,127,0.08) 30%, transparent 70%)',
+            clipPath: 'polygon(42% 0, 58% 0, 100% 100%, 0 100%)',
+            mixBlendMode: 'screen',
+          }}
+          animate={
+            lampOn
+              ? { opacity: [1, 1, 1, 0.4, 1, 1, 0.7, 1, 1, 1, 0.5, 1, 1] }
+              : { opacity: 0 }
+          }
+          transition={
+            lampOn
+              ? { duration: 14, repeat: Infinity, ease: 'easeInOut' }
+              : { duration: 0.5 }
+          }
+        />
+      </div>
+
       {/* floating orbital icons */}
       <div className="pointer-events-none absolute inset-0">
         {[

@@ -93,6 +93,16 @@ export const translations = {
   'proj.status': { en: 'status:', id: 'status:' },
   'proj.deployed': { en: 'deployed.exe', id: 'terdeploy.exe' },
   'proj.see_on_ig': { en: 'watch on IG →', id: 'tonton di IG →' },
+  'proj.tagline': {
+    en: '// from schematic to soldered board',
+    id: '// dari skematik sampai board jadi',
+  },
+  'proj.side_builds': { en: '// builds', id: '// proyek' },
+  'proj.side_flow': { en: '// pcb.flow', id: '// alur.pcb' },
+  'proj.b_water': { en: 'water sensor dashboard', id: 'dashboard sensor air' },
+  'proj.b_locker': { en: 'school locker doorlock', id: 'doorlock loker sekolah' },
+  'proj.b_motor': { en: 'rfid keyless motorcycle', id: 'keyless motor rfid' },
+  'proj.b_nurse': { en: 'nurse-call system', id: 'sistem nurse call' },
 
   // ─── IG Highlights strip (inside Projects) ───
   'hl.eyebrow': {

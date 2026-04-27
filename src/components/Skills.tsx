@@ -7,24 +7,26 @@ type Skill = {
   glyph: string
   color: string
   category: 'lang' | 'hw' | 'proto' | 'tool'
+  href: string
 }
 
+const WIKI = 'https://en.wikipedia.org/wiki/'
 const skills: Skill[] = [
-  { name: 'C++', glyph: 'C++', color: '#00599C', category: 'lang' },
-  { name: 'C', glyph: 'C', color: '#A8B9CC', category: 'lang' },
-  { name: 'Python', glyph: 'Py', color: '#FFD43B', category: 'lang' },
-  { name: 'TypeScript', glyph: 'TS', color: '#3178C6', category: 'lang' },
-  { name: 'ESP32', glyph: '⌬32', color: '#E7352C', category: 'hw' },
-  { name: 'ESP8266', glyph: '⌬86', color: '#0066B3', category: 'hw' },
-  { name: 'Arduino', glyph: '◑', color: '#00979D', category: 'hw' },
-  { name: 'Raspberry Pi', glyph: '🍓', color: '#A22846', category: 'hw' },
-  { name: 'MQTT', glyph: '≋', color: '#660066', category: 'proto' },
-  { name: 'AES', glyph: '⚿', color: '#c6ff00', category: 'proto' },
-  { name: 'RFID', glyph: '))) ', color: '#5af7ff', category: 'proto' },
-  { name: 'Docker', glyph: '🐳', color: '#2496ED', category: 'tool' },
-  { name: 'EasyEDA', glyph: '⚒', color: '#1762a8', category: 'tool' },
-  { name: 'LCSC', glyph: '⎘', color: '#ff3df0', category: 'tool' },
-  { name: 'Linux', glyph: '🐧', color: '#FCC624', category: 'tool' },
+  { name: 'C++', glyph: 'C++', color: '#00599C', category: 'lang', href: `${WIKI}C%2B%2B` },
+  { name: 'C', glyph: 'C', color: '#A8B9CC', category: 'lang', href: `${WIKI}C_(programming_language)` },
+  { name: 'Python', glyph: 'Py', color: '#FFD43B', category: 'lang', href: `${WIKI}Python_(programming_language)` },
+  { name: 'TypeScript', glyph: 'TS', color: '#3178C6', category: 'lang', href: `${WIKI}TypeScript` },
+  { name: 'ESP32', glyph: '⌬32', color: '#E7352C', category: 'hw', href: `${WIKI}ESP32` },
+  { name: 'ESP8266', glyph: '⌬86', color: '#0066B3', category: 'hw', href: `${WIKI}ESP8266` },
+  { name: 'Arduino', glyph: '◑', color: '#00979D', category: 'hw', href: `${WIKI}Arduino` },
+  { name: 'Raspberry Pi', glyph: '🍓', color: '#A22846', category: 'hw', href: `${WIKI}Raspberry_Pi` },
+  { name: 'MQTT', glyph: '≋', color: '#660066', category: 'proto', href: `${WIKI}MQTT` },
+  { name: 'AES', glyph: '⚿', color: '#c6ff00', category: 'proto', href: `${WIKI}Advanced_Encryption_Standard` },
+  { name: 'RFID', glyph: '))) ', color: '#5af7ff', category: 'proto', href: `${WIKI}Radio-frequency_identification` },
+  { name: 'Docker', glyph: '🐳', color: '#2496ED', category: 'tool', href: `${WIKI}Docker_(software)` },
+  { name: 'EasyEDA', glyph: '⚒', color: '#1762a8', category: 'tool', href: `${WIKI}EasyEDA` },
+  { name: 'LCSC', glyph: '⎘', color: '#ff3df0', category: 'tool', href: 'https://en.wikipedia.org/wiki/Special:Search?search=LCSC+Electronics' },
+  { name: 'Linux', glyph: '🐧', color: '#FCC624', category: 'tool', href: `${WIKI}Linux` },
 ]
 
 const orbitItems = ['ESP32', 'Arduino', 'Python', 'C++', 'MQTT', 'RFID']
@@ -141,8 +143,12 @@ export default function Skills() {
               className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4"
             >
               {skills.map((s) => (
-                <motion.div
+                <motion.a
                   key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${s.name} on Wikipedia`}
                   variants={{
                     hidden: { opacity: 0, y: 20, scale: 0.8 },
                     show: {
@@ -153,7 +159,7 @@ export default function Skills() {
                     },
                   }}
                   whileHover={{ y: -6, scale: 1.05 }}
-                  className="glass glass-hover group relative flex aspect-square flex-col items-center justify-center gap-2 overflow-hidden rounded-xl p-3"
+                  className="glass glass-hover group relative flex aspect-square flex-col items-center justify-center gap-2 overflow-hidden rounded-xl p-3 no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                 >
                   <div
                     className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
@@ -177,7 +183,7 @@ export default function Skills() {
                     className="absolute -bottom-1 left-1/2 h-px w-3/4 -translate-x-1/2 origin-center scale-x-0 transition-transform group-hover:scale-x-100"
                     style={{ background: s.color, boxShadow: `0 0 10px ${s.color}` }}
                   />
-                </motion.div>
+                </motion.a>
               ))}
             </motion.div>
           </div>
