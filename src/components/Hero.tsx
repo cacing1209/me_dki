@@ -1,20 +1,21 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useT } from '../lib/i18n'
+import { useTheme } from '../lib/theme'
 import type { Lang } from '../lib/translations'
 
 const ROLES: Record<Lang, string[]> = {
   en: [
     'IoT Engineer',
     'Hardware Tinkerer',
-    'CTF Player',
+    'Microcontroller Hacker',
     'Maker',
     'MQTT Wizard',
   ],
   id: [
     'Insinyur IoT',
     'Penjelajah Hardware',
-    'Pemain CTF',
+    'Penjinak Microcontroller',
     'Maker',
     'Penyetel MQTT',
   ],
@@ -83,88 +84,123 @@ export default function Hero({ name = 'diki' }: { name?: string }) {
   const { t, lang } = useT()
   const role = useTyping(ROLES[lang])
   const heading = `${t('hero.greeting')} ${name}`
-  const [lampOn, setLampOn] = useState(true)
+  const [theme, toggleTheme] = useTheme()
+  const isDark = theme === 'dark'
 
   return (
     <section
       id="home"
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 pt-28 pb-20"
     >
-      {/* hanging living-room lamp — click to toggle */}
-      <div className="absolute top-0 left-1/2 z-20 origin-top -translate-x-1/2 scale-[0.55] sm:scale-75 md:scale-100">
+      {/* celestial toggle — moon (dark) ↔ sun (light) */}
+      <div className="absolute top-10 left-1/2 z-20 -translate-x-1/2 sm:top-14 md:top-16">
         <button
           type="button"
-          onClick={() => setLampOn((v) => !v)}
-          aria-label={lampOn ? 'turn lamp off' : 'turn lamp on'}
-          aria-pressed={lampOn}
-          className="relative block cursor-pointer bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-0"
-          style={{ width: 110, height: 220 }}
+          onClick={toggleTheme}
+          aria-label={isDark ? 'switch to light mode' : 'switch to dark mode'}
+          aria-pressed={!isDark}
+          className="group relative block cursor-pointer bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          style={{ width: 120, height: 120 }}
         >
-          {/* cord */}
-          <div className="absolute top-0 left-1/2 h-[124px] w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-white/15 to-white/30" />
-          {/* shade */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2"
-            style={{
-              top: 124,
-              width: 0,
-              height: 0,
-              borderLeft: '40px solid transparent',
-              borderRight: '40px solid transparent',
-              borderTop: '48px solid rgba(40, 28, 24, 0.92)',
-              filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.5))',
+          {/* halo / glow */}
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-full"
+            animate={{
+              background: isDark
+                ? 'radial-gradient(circle, rgba(200,210,255,0.30) 0%, rgba(140,160,220,0.10) 40%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(255,220,140,0.55) 0%, rgba(255,170,80,0.20) 40%, transparent 70%)',
+              scale: isDark ? 1 : 1.15,
             }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            style={{ filter: 'blur(8px)' }}
           />
-          {/* bulb */}
+
+          {/* the celestial body — rotates as it morphs */}
           <motion.div
-            className="absolute left-1/2 h-[28px] w-[28px] -translate-x-1/2 rounded-full"
-            style={{
-              top: 162,
-              background: lampOn
-                ? 'radial-gradient(circle, #fff4d6 0%, #ffd27f 55%, transparent 90%)'
-                : 'radial-gradient(circle, #2a2520 0%, #15110d 100%)',
-              boxShadow: lampOn
-                ? '0 0 42px 14px #ffd27f, 0 0 100px 32px rgba(255,183,77,0.55)'
-                : 'none',
-            }}
-            animate={
-              lampOn
-                ? {
-                    opacity: [1, 1, 1, 0.45, 1, 1, 0.75, 1, 1, 1, 0.55, 1, 1],
-                    scale: [1, 1, 1, 0.94, 1, 1, 0.97, 1, 1, 1, 0.95, 1, 1],
-                  }
-                : { opacity: 1, scale: 1 }
-            }
-            transition={
-              lampOn
-                ? { duration: 14, repeat: Infinity, ease: 'easeInOut' }
-                : { duration: 0.3 }
-            }
-          />
+            className="absolute inset-0 grid place-items-center"
+            animate={{ rotate: isDark ? 0 : 360 }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {isDark ? (
+                <motion.svg
+                  key="moon"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 60 60"
+                  initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  style={{
+                    filter:
+                      'drop-shadow(0 0 18px rgba(200,210,255,0.55)) drop-shadow(0 0 40px rgba(140,160,220,0.35))',
+                  }}
+                >
+                  <defs>
+                    <radialGradient id="moon-g" cx="35%" cy="35%" r="65%">
+                      <stop offset="0%" stopColor="#fbf6ff" />
+                      <stop offset="60%" stopColor="#dcd6ff" />
+                      <stop offset="100%" stopColor="#9aa3d6" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="30" cy="30" r="22" fill="url(#moon-g)" />
+                  <circle cx="22" cy="24" r="2.4" fill="rgba(120,130,180,0.35)" />
+                  <circle cx="36" cy="22" r="1.6" fill="rgba(120,130,180,0.30)" />
+                  <circle cx="34" cy="36" r="3" fill="rgba(120,130,180,0.30)" />
+                  <circle cx="24" cy="38" r="1.8" fill="rgba(120,130,180,0.25)" />
+                </motion.svg>
+              ) : (
+                <motion.svg
+                  key="sun"
+                  width="80"
+                  height="80"
+                  viewBox="0 0 80 80"
+                  initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  style={{
+                    filter:
+                      'drop-shadow(0 0 22px rgba(255,210,127,0.85)) drop-shadow(0 0 50px rgba(255,170,80,0.55))',
+                  }}
+                >
+                  <defs>
+                    <radialGradient id="sun-g" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#fff7d6" />
+                      <stop offset="60%" stopColor="#ffd27f" />
+                      <stop offset="100%" stopColor="#ff9d3d" />
+                    </radialGradient>
+                  </defs>
+                  <motion.g
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 28,
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }}
+                    style={{ transformOrigin: '40px 40px' }}
+                  >
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <rect
+                        key={i}
+                        x="38.5"
+                        y="4"
+                        width="3"
+                        height="12"
+                        rx="1.5"
+                        fill="#ffd27f"
+                        transform={`rotate(${i * 45} 40 40)`}
+                      />
+                    ))}
+                  </motion.g>
+                  <circle cx="40" cy="40" r="18" fill="url(#sun-g)" />
+                </motion.svg>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </button>
-        {/* projected light cone — non-interactive */}
-        <motion.div
-          className="pointer-events-none absolute left-1/2 -translate-x-1/2"
-          style={{
-            top: 180,
-            width: 580,
-            height: 760,
-            background:
-              'radial-gradient(ellipse at top, rgba(255,210,127,0.26) 0%, rgba(255,210,127,0.08) 30%, transparent 70%)',
-            clipPath: 'polygon(42% 0, 58% 0, 100% 100%, 0 100%)',
-            mixBlendMode: 'screen',
-          }}
-          animate={
-            lampOn
-              ? { opacity: [1, 1, 1, 0.4, 1, 1, 0.7, 1, 1, 1, 0.5, 1, 1] }
-              : { opacity: 0 }
-          }
-          transition={
-            lampOn
-              ? { duration: 14, repeat: Infinity, ease: 'easeInOut' }
-              : { duration: 0.5 }
-          }
-        />
       </div>
 
       {/* floating orbital icons */}

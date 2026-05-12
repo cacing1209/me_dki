@@ -138,12 +138,12 @@ export default function Background() {
 
       {/* noise overlay */}
       <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-noise" />
-      {/* vignette */}
+      {/* vignette — themed */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 transition-[background] duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
         style={{
           background:
-            'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%)',
+            'radial-gradient(ellipse at center, transparent 50%, var(--vignette) 100%)',
         }}
       />
     </div>
